@@ -1,0 +1,32 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: mybatis-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: 192.168.3.3:8080
+  datasource:
+    arknights:
+      # 当前数据源操作类型
+      type: com.alibaba.druid.pool.DruidDataSource
+      # mysql驱动类
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/arknights?serverTimezone=GMT&useSSL=false&allowPublicKeyRetrieval=true
+      username: root
+      password: 123456
+    workspace01:
+      # 当前数据源操作类型
+      type: com.alibaba.druid.pool.DruidDataSource
+      # mysql驱动类
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/workspace_01?serverTimezone=GMT&useSSL=false&allowPublicKeyRetrieval=true
+      username: root
+      password: 123456
+feign:
+  sentinel:
+    enabled: true

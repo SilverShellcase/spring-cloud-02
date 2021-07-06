@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rust.demo.mapper.workspace01.OperatorMapper">
+  <resultMap id="BaseResultMap" type="com.rust.demo.entity.Operator">
+    <!--@mbg.generated-->
+    <!--@Table `operator`-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="code_name" jdbcType="VARCHAR" property="codeName" />
+    <result column="rarity" jdbcType="TINYINT" property="rarity" />
+    <result column="job" jdbcType="VARCHAR" property="job" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, code_name, rarity, job, gender
+  </sql>
+</mapper>

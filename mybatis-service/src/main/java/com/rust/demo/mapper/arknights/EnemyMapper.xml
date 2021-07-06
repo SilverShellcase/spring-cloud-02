@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rust.demo.mapper.arknights.EnemyMapper">
+  <resultMap id="BaseResultMap" type="com.rust.demo.entity.Enemy">
+    <!--@mbg.generated-->
+    <!--@Table t_enemy-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="enemy_index" jdbcType="VARCHAR" property="enemyIndex" />
+    <result column="enemy_tags" jdbcType="VARCHAR" property="enemyTags" />
+    <result column="sort_id" jdbcType="TINYINT" property="sortId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="enemy_race" jdbcType="VARCHAR" property="enemyRace" />
+    <result column="enemy_level" jdbcType="VARCHAR" property="enemyLevel" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="attack_type" jdbcType="VARCHAR" property="attackType" />
+    <result column="endure" jdbcType="VARCHAR" property="endure" />
+    <result column="attack" jdbcType="VARCHAR" property="attack" />
+    <result column="defence" jdbcType="VARCHAR" property="defence" />
+    <result column="resistance" jdbcType="VARCHAR" property="resistance" />
+    <result column="ability" jdbcType="VARCHAR" property="ability" />
+    <result column="is_invalid_killed" jdbcType="BOOLEAN" property="isInvalidKilled" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, enemy_index, enemy_tags, sort_id, `name`, enemy_race, enemy_level, description,
+    attack_type, endure, attack, defence, resistance, ability, is_invalid_killed
+  </sql>
+</mapper>

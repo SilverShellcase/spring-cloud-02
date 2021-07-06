@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rust.demo.mapper.arknights.CharacterInfoMapper">
+  <resultMap id="BaseResultMap" type="com.rust.demo.entity.CharacterInfo">
+    <!--@mbg.generated-->
+    <!--@Table t_character_info-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="draw_name" jdbcType="VARCHAR" property="drawName" />
+    <result column="info_name" jdbcType="VARCHAR" property="infoName" />
+    <result column="code_name" jdbcType="VARCHAR" property="codeName" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="combat_experience" jdbcType="VARCHAR" property="combatExperience" />
+    <result column="place_of_birth" jdbcType="VARCHAR" property="placeOfBirth" />
+    <result column="date_of_birth" jdbcType="VARCHAR" property="dateOfBirth" />
+    <result column="race" jdbcType="VARCHAR" property="race" />
+    <result column="height" jdbcType="VARCHAR" property="height" />
+    <result column="infection_status" jdbcType="VARCHAR" property="infectionStatus" />
+    <result column="physical_strength" jdbcType="VARCHAR" property="physicalStrength" />
+    <result column="mobility" jdbcType="VARCHAR" property="mobility" />
+    <result column="physical_resilience" jdbcType="VARCHAR" property="physicalResilience" />
+    <result column="tactical_acumen" jdbcType="VARCHAR" property="tacticalAcumen" />
+    <result column="combat_skill" jdbcType="VARCHAR" property="combatSkill" />
+    <result column="originium_arts_assilimation" jdbcType="VARCHAR" property="originiumArtsAssilimation" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, draw_name, info_name, code_name, gender, combat_experience, place_of_birth,
+    date_of_birth, race, height, infection_status, physical_strength, mobility, physical_resilience, 
+    tactical_acumen, combat_skill, originium_arts_assilimation
+  </sql>
+</mapper>
