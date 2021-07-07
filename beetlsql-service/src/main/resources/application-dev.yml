@@ -27,6 +27,22 @@ spring:
       url: jdbc:mysql://127.0.0.1:3306/workspace_01?serverTimezone=GMT&useSSL=false&allowPublicKeyRetrieval=true
       username: root
       password: 123456
+beetlsql:
+  sqlManagers: arknights,workspace01
+  arknights:
+    ds: arknightsDataSource
+    basePackage: com.rust.demo.mapper.arknights
+    daoSuffix: Mapper
+    dev: true
+    sqlFileCharset: utf-8
+    dbStyle: org.beetl.sql.core.db.MySqlStyle
+  workspace01:
+    ds: workspace01DataSource
+    basePackage: com.rust.demo.mapper.workspace01
+    daoSuffix: Mapper
+    dev: true
+    sqlFileCharset: utf-8
+    dbStyle: org.beetl.sql.core.db.MySqlStyle
 feign:
   sentinel:
     enabled: true

@@ -3,10 +3,12 @@ package com.rust.demo.entity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.beetl.sql.annotation.entity.Table;
 
 @Getter
 @Setter
 @ToString
+@Table(name = "t_character")
 public class Character {
     private String id;
 

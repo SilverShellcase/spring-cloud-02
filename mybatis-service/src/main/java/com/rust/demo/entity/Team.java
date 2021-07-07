@@ -1,5 +1,7 @@
 package com.rust.demo.entity;
 
+import com.baomidou.mybatisplus.annotation.SqlCondition;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Getter;
@@ -17,9 +19,9 @@ public class Team extends Model<Team> {
     private Integer orderNum;
 
     private Integer powerLevel;
-
+    @TableField(condition = SqlCondition.LIKE)
     private String powerName;
-
+    @TableField(condition = SqlCondition.LIKE)
     private String powerCode;
 
     private String color;
