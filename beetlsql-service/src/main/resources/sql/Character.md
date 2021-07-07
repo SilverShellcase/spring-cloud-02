@@ -1,7 +1,7 @@
 selectList
 ====
 select * from t_character
-where 1 = 1
+where 1=1
 -- @if(!isBlank(name)){
 and name like Concat('%', #{name}, '%')
 -- @}

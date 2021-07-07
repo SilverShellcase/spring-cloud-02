@@ -20,7 +20,7 @@ public class Enemy extends Model<Enemy> {
     @TableField(condition = SqlCondition.LIKE)
     private String enemyTags;
 
-    private Byte sortId;
+    private Integer sortId;
     @TableField(condition = SqlCondition.LIKE)
     private String name;
     @TableField(condition = SqlCondition.LIKE)

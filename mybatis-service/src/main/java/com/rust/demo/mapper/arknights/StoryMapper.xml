@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rust.demo.mapper.arknights.StoryMapper">
+  <resultMap id="BaseResultMap" type="com.rust.demo.entity.Story">
+    <!--@mbg.generated-->
+    <!--@Table t_story-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="char_id" jdbcType="VARCHAR" property="charId" />
+    <result column="story_text" jdbcType="VARCHAR" property="storyText" />
+    <result column="unlock_type" jdbcType="TINYINT" property="unLockType" />
+    <result column="unlock_param" jdbcType="VARCHAR" property="unLockParam" />
+    <result column="unlock_string" jdbcType="VARCHAR" property="unLockString" />
+    <result column="story_title" jdbcType="VARCHAR" property="storyTitle" />
+    <result column="unlock_or_not" jdbcType="TINYINT" property="unLockorNot" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, char_id, story_text, unlock_type, unlock_param, unlock_string, story_title, unlock_or_not
+  </sql>
+</mapper>

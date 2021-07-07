@@ -22,28 +22,27 @@ public class OperatorController {
 
     @Transactional("workspace01TransactionManager")
     @PostMapping("/operator/add")
-    public Result add(@RequestBody Operator operator) {
-        operatorService.save(operator);
+    public Result add(@RequestBody Operator entity) {
+        operatorService.save(entity);
         return ResultUtil.success();
     }
 
     @Transactional("workspace01TransactionManager")
     @PostMapping("/operator/update")
-    public Result update(@RequestBody Operator operator) {
-        operatorService.updateById(operator);
+    public Result update(@RequestBody Operator entity) {
+        operatorService.updateById(entity);
         return ResultUtil.success();
     }
 
     @PostMapping("/operator/get")
-    public Result get(@RequestBody Operator operator) {
-        Operator result = operatorService.getById(operator.getId());
+    public Result get(@RequestBody Operator entity) {
+        Operator result = operatorService.getById(entity.getId());
         return ResultUtil.success(result);
     }
 
     @PostMapping("/operator/list")
-    public Result list(@RequestBody Operator operator) {
-        operator.setId(null);
-        List<Operator> list = operatorService.list(new QueryWrapper<>(operator));
+    public Result list(@RequestBody Operator entity) {
+        List<Operator> list = operatorService.list(new QueryWrapper<>(entity));
         return ResultUtil.success(list);
     }
 }

@@ -6,19 +6,22 @@ import com.rust.demo.entity.Enemy;
 import com.rust.demo.service.EnemyService;
 import com.rust.demo.util.ImportUtil;
 import com.rust.demo.util.ResultUtil;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
+
 @RestController
 public class EnemyController {
 
-    @Autowired
+    @Resource
     private EnemyService enemyService;
 
+    @Transactional("arknightsTransactionManager")
     @PostMapping("/enemy/importJson")
     public Result importJson(@RequestParam("file") MultipartFile file) {
         ImportUtil<Enemy> importUtil = new ImportUtil<>();
@@ -27,12 +30,12 @@ public class EnemyController {
     }
 
     @PostMapping("/enemy/get")
-    public Result get(@RequestBody Enemy enemy) {
-        return ResultUtil.success(enemyService.getById(enemy.getId()));
+    public Result get(@RequestBody Enemy entity) {
+        return ResultUtil.success(enemyService.getById(entity.getId()));
     }
 
     @PostMapping("/enemy/list")
-    public Result list(@RequestBody Enemy enemy) {
-        return ResultUtil.success(enemyService.list(new QueryWrapper<>(enemy)));
+    public Result list(@RequestBody Enemy entity) {
+        return ResultUtil.success(enemyService.list(new QueryWrapper<>(entity)));
     }
 }
