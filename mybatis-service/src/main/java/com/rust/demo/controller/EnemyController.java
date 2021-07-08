@@ -22,8 +22,8 @@ public class EnemyController {
     private EnemyService enemyService;
 
     @Transactional("arknightsTransactionManager")
-    @PostMapping("/enemy/importJson")
-    public Result importJson(@RequestParam("file") MultipartFile file) {
+    @PostMapping("/enemy/import")
+    public Result importEnemy(@RequestParam("file") MultipartFile file) {
         ImportUtil<Enemy> importUtil = new ImportUtil<>();
         importUtil.importJson(file, enemyService, Enemy.class);
         return ResultUtil.success();

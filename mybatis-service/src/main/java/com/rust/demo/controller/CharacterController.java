@@ -38,8 +38,8 @@ public class CharacterController {
     private StoryService storyService;
 
     @Transactional("arknightsTransactionManager")
-    @PostMapping("/character/importJson")
-    public Result importJson(@RequestParam("file") MultipartFile file) {
+    @PostMapping("/character/import")
+    public Result importCharacter(@RequestParam("file") MultipartFile file) {
         ImportUtil<Character> importUtil = new ImportUtil<>();
         importUtil.importJson(file, characterService, Character.class);
         return ResultUtil.success();
@@ -57,8 +57,8 @@ public class CharacterController {
     }
 
     @Transactional("arknightsTransactionManager")
-    @PostMapping("/character/importInfoJson")
-    public Result importInfoJson(@RequestParam("file") MultipartFile file) throws IOException {
+    @PostMapping("/character/importCharacterInfo")
+    public Result importCharacterInfo(@RequestParam("file") MultipartFile file) throws IOException {
         JsonNode jsonNode = new JsonMapper().readTree(file.getInputStream());
         JsonNode handbookDict = jsonNode.get("handbookDict");
         Iterator<String> fieldNames = handbookDict.fieldNames();

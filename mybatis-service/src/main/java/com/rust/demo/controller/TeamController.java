@@ -22,8 +22,8 @@ public class TeamController {
     private TeamService teamService;
 
     @Transactional("arknightsTransactionManager")
-    @PostMapping("/team/importJson")
-    public Result importJson(@RequestParam("file") MultipartFile file) {
+    @PostMapping("/team/import")
+    public Result importTeam(@RequestParam("file") MultipartFile file) {
         ImportUtil<Team> importUtil = new ImportUtil<>();
         importUtil.importJson(file, teamService, Team.class);
         return ResultUtil.success();
