@@ -21,13 +21,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 @RestController
 public class CharacterController {
+
+    private final List<String> likeFields = Arrays.asList("name", "description", "appellation", "tagList", "itemObtainApproach");
+    private final List<String> eqFields = Arrays.asList("position", "profession");
 
     @Resource
     private CharacterMapper characterMapper;
@@ -45,10 +47,6 @@ public class CharacterController {
     public Result page(@RequestBody Map<String, Object> param) {
         Query<Character> query = characterMapper.createQuery();
         Character character = BeanUtil.mapToBean(param, Character.class, true);
-        ArrayList<String> likeFields = new ArrayList<>();
-        ArrayList<String> eqFields = new ArrayList<>();
-        Collections.addAll(likeFields, "name", "description", "appellation", "tagList", "itemObtainApproach");
-        Collections.addAll(eqFields, "position", "profession");
         CustomQueryUtil.setLikeField(character, query, likeFields);
         CustomQueryUtil.setEqField(character, query, eqFields);
 

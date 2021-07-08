@@ -17,7 +17,7 @@ public class Enemy {
 
     private String enemyTags;
 
-    private Byte sortId;
+    private Integer sortId;
 
     private String name;
 

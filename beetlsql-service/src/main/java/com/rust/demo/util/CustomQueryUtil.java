@@ -1,5 +1,6 @@
 package com.rust.demo.util;
 
+import cn.hutool.core.util.StrUtil;
 import org.beetl.sql.core.query.Query;
 import org.springframework.util.StringUtils;
 
@@ -32,16 +33,16 @@ public class CustomQueryUtil {
                 continue;
             }
             declaredField.setAccessible(true);
-            String value = null;
+            Object value = null;
             try {
-                value = (String) declaredField.get(entity);
+                value = declaredField.get(entity);
             } catch (IllegalAccessException e) {
                 continue;
             }
             if (StringUtils.isEmpty(value)) {
                 continue;
             }
-            map.put(declaredField.getName(), value);
+            map.put(StrUtil.toUnderlineCase(declaredField.getName()), value);
         }
         return map;
     }
