@@ -3,7 +3,7 @@ package com.rust.demo.util;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegexUtil {
+public class CustomRegexUtil {
 
     public static String retain(String str, String regex) {
         Pattern compile = Pattern.compile(regex);

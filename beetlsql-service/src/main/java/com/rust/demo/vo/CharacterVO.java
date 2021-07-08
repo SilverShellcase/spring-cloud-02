@@ -1,15 +1,18 @@
 package com.rust.demo.vo;
 
+import com.rust.demo.entity.Story;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Setter
 @Getter
 @NoArgsConstructor
 public class CharacterVO {
 
-    private String charId;
+    private String id;
 
     private String codeName;
 
@@ -80,4 +83,6 @@ public class CharacterVO {
     private String combatSkill;
 
     private String originiumArtsAssilimation;
+
+    private List<Story> storyList;
 }

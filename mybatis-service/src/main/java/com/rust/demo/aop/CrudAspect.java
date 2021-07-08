@@ -12,7 +12,7 @@ import java.lang.reflect.Field;
 @Component
 public class CrudAspect {
 
-    @Pointcut("execution(public * com.rust.demo.controller..*.list(..))")
+    @Pointcut("execution( * com.rust.demo.controller..*.list(..))")
     public void listPointCut() {
     }
 

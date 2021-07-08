@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-public class FileUtil {
+public class CustomFileUtil {
 
     public static ResponseEntity<FileSystemResource> export(File file) {
         if (file == null) {

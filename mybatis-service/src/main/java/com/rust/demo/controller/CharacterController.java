@@ -1,6 +1,5 @@
 package com.rust.demo.controller;
 
-import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -12,8 +11,8 @@ import com.rust.demo.entity.Story;
 import com.rust.demo.service.CharacterInfoService;
 import com.rust.demo.service.CharacterService;
 import com.rust.demo.service.StoryService;
+import com.rust.demo.util.CustomBeanUtil;
 import com.rust.demo.util.ImportUtil;
-import com.rust.demo.util.RegexUtil;
 import com.rust.demo.util.ResultUtil;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -79,13 +78,13 @@ public class CharacterController {
                     String string = storyText.toString();
                     if (string.contains("【")) {
                         if (i == 0) {
-                            setBasicInfo(characterInfo, string);
+                            characterInfoService.setBasicInfo(characterInfo, string);
                         } else if (i == 1) {
-                            setPhysicalExam(characterInfo, string);
+                            characterInfoService.setPhysicalExam(characterInfo, string);
                         }
                     }
                     Story story = JSONUtil.toBean(storyTextAudio.toString(), Story.class);
-                    BeanUtil.copyProperties(JSONUtil.toBean(storyNode.toString(), Story.class), story, "storyTitle", "unLockorNot");
+                    CustomBeanUtil.copyProperties(JSONUtil.toBean(storyNode.toString(), Story.class), story);
                     story.setCharId(id);
                     storyList.add(story);
                 }
@@ -98,33 +97,5 @@ public class CharacterController {
         storyService.remove(null);
         storyService.saveBatch(storyList);
         return ResultUtil.success();
-    }
-
-    private void setBasicInfo(CharacterInfo info, String str) {
-        if (str.contains("【代号】")) {
-            info.setCodeName(dealBracket(str, "(【代号】.*?\\\\n)"));
-            info.setGender(dealBracket(str, "(【性别】.*?\\\\n)"));
-            info.setCombatExperience(dealBracket(str, "(【战斗经验】.*?\\\\n)"));
-            info.setPlaceOfBirth(dealBracket(str, "(【出身地】.*?\\\\n)"));
-            info.setDateOfBirth(dealBracket(str, "(【生日】.*?\\\\n)"));
-            info.setRace(dealBracket(str, "(【种族】.*?\\\\n)"));
-            info.setHeight(dealBracket(str, "(【身高】.*?\\\\n)"));
-            info.setInfectionStatus(RegexUtil.retain(str, "(【矿石病感染情况】.*?\\\\n.*?(\"|\\\\n))").replaceAll("【.*?】.*?\\\\n|\"|\\\\n", "").trim());
-        }
-    }
-
-    private void setPhysicalExam(CharacterInfo info, String str) {
-        if (str.contains("【物理强度】")) {
-            info.setPhysicalStrength(dealBracket(str, "(【物理强度】.*?\\\\n)"));
-            info.setMobility(dealBracket(str, "(【战场机动】.*?\\\\n)"));
-            info.setPhysicalResilience(dealBracket(str, "(【生理耐受】.*?\\\\n)"));
-            info.setTacticalAcumen(dealBracket(str, "(【战术规划】.*?\\\\n)"));
-            info.setCombatSkill(dealBracket(str, "(【战斗技巧】.*?\\\\n)"));
-            info.setOriginiumArtsAssilimation(RegexUtil.retain(str, "(【源石技艺适应性】.*?(\"|\\\\n))").replaceAll("【.*?】|\\\\n|\"", "").trim());
-        }
-    }
-
-    private String dealBracket(String str, String regex) {
-        return RegexUtil.retain(str, regex).replaceAll("【.*?】|\\\\n", "").trim();
     }
 }
