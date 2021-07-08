@@ -6,7 +6,7 @@ import org.beetl.sql.core.page.PageRequest;
 
 import java.util.Map;
 
-public class PageUtil {
+public class CustomPageUtil {
 
     public static PageRequest getPageRequest(Map<String, Object> param) {
         long page;

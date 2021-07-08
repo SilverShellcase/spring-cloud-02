@@ -9,18 +9,20 @@ import com.rust.demo.mapper.arknights.CharacterInfoMapper;
 import com.rust.demo.mapper.arknights.CharacterMapper;
 import com.rust.demo.mapper.arknights.StoryMapper;
 import com.rust.demo.util.CustomBeanUtil;
-import com.rust.demo.util.PageUtil;
+import com.rust.demo.util.CustomPageUtil;
+import com.rust.demo.util.CustomQueryUtil;
 import com.rust.demo.util.ResultUtil;
 import com.rust.demo.vo.CharacterVO;
-import org.beetl.sql.core.page.PageResult;
 import org.beetl.sql.core.query.LambdaQuery;
+import org.beetl.sql.core.query.Query;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -41,13 +43,16 @@ public class CharacterController {
 
     @PostMapping("character/page")
     public Result page(@RequestBody Map<String, Object> param) {
-        LambdaQuery<Character> lambdaQuery = characterMapper.createLambdaQuery();
+        Query<Character> query = characterMapper.createQuery();
         Character character = BeanUtil.mapToBean(param, Character.class, true);
-        if (!StringUtils.isEmpty(character.getProfession())) {
-            lambdaQuery.andLike(Character::getProfession, "%" + character.getProfession() + "%");
-        }
-        PageResult<Character> page = lambdaQuery.page(PageUtil.getPageRequest(param));
-        return ResultUtil.success(page);
+        ArrayList<String> likeFields = new ArrayList<>();
+        ArrayList<String> eqFields = new ArrayList<>();
+        Collections.addAll(likeFields, "name", "description", "appellation", "tagList", "itemObtainApproach");
+        Collections.addAll(eqFields, "position", "profession");
+        CustomQueryUtil.setLikeField(character, query, likeFields);
+        CustomQueryUtil.setEqField(character, query, eqFields);
+
+        return ResultUtil.success(query.page(CustomPageUtil.getPageRequest(param)));
     }
 
     @PostMapping("character/get")
