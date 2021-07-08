@@ -27,5 +27,5 @@ public class Story extends Model<Story> {
     @TableField(condition = SqlCondition.LIKE)
     private String storyTitle;
     @TableField("unlock_or_not")
-    private Boolean unLockorNot;
+    private Byte unLockorNot;
 }

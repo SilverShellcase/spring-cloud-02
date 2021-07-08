@@ -38,4 +38,34 @@ public class BeetlsqlController {
     public Result characterDetele(@RequestBody Object object) {
         return beetlsqlService.characterDetele(object);
     }
+
+    @PostMapping("/enemy/list")
+    public Result enemyList(@RequestBody Object object) {
+        return beetlsqlService.enemyList(object);
+    }
+
+    @PostMapping("/enemy/page")
+    public Result enemyPage(@RequestBody Object object) {
+        return beetlsqlService.enemyPage(object);
+    }
+
+    @PostMapping("/story/list")
+    public Result storyList(@RequestBody Object object) {
+        return beetlsqlService.storyList(object);
+    }
+
+    @PostMapping("/story/page")
+    public Result storyPage(@RequestBody Object object) {
+        return beetlsqlService.storyPage(object);
+    }
+
+    @PostMapping("/team/list")
+    public Result teamList(@RequestBody Object object) {
+        return beetlsqlService.teamList(object);
+    }
+
+    @PostMapping("/team/page")
+    public Result teamPage(@RequestBody Object object) {
+        return beetlsqlService.teamPage(object);
+    }
 }

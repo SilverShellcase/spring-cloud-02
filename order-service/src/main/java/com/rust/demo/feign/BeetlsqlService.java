@@ -21,4 +21,22 @@ public interface BeetlsqlService {
 
     @PostMapping("/character/delete")
     Result characterDetele(Object object);
+
+    @PostMapping("/enemy/list")
+    Result enemyList(Object object);
+
+    @PostMapping("/enemy/page")
+    Result enemyPage(Object object);
+
+    @PostMapping("/story/list")
+    Result storyList(Object object);
+
+    @PostMapping("/story/page")
+    Result storyPage(Object object);
+
+    @PostMapping("/team/list")
+    Result teamList(Object object);
+
+    @PostMapping("/team/page")
+    Result teamPage(Object object);
 }

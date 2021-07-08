@@ -23,7 +23,7 @@ public class Team {
 
     private String color;
 
-    private Boolean isLimited;
+    private Byte isLimited;
 
-    private Boolean isRaw;
+    private Byte isRaw;
 }

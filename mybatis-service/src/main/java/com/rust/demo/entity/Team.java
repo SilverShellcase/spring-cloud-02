@@ -26,7 +26,7 @@ public class Team extends Model<Team> {
 
     private String color;
 
-    private Boolean isLimited;
+    private Byte isLimited;
 
-    private Boolean isRaw;
+    private Byte isRaw;
 }

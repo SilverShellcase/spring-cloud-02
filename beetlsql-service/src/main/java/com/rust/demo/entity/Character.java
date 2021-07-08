@@ -16,7 +16,7 @@ public class Character {
 
     private String description;
 
-    private Boolean canUseGeneralPotentialItem;
+    private Byte canUseGeneralPotentialItem;
 
     private String potentialItemId;
 
@@ -42,13 +42,13 @@ public class Character {
 
     private String itemObtainApproach;
 
-    private Boolean isNotObtainable;
+    private Byte isNotObtainable;
 
-    private Boolean isSpChar;
+    private Byte isSpChar;
 
-    private Boolean maxPotentialLevel;
+    private Byte maxPotentialLevel;
 
-    private Boolean rarity;
+    private Byte rarity;
 
     private String profession;
 }

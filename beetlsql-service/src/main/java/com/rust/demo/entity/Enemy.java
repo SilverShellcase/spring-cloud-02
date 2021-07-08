@@ -39,5 +39,5 @@ public class Enemy {
 
     private String ability;
 
-    private Boolean isInvalidKilled;
+    private Byte isInvalidKilled;
 }

@@ -39,7 +39,7 @@ public class CustomQueryUtil {
             } catch (IllegalAccessException e) {
                 continue;
             }
-            if (StringUtils.isEmpty(value)) {
+            if (StringUtils.isEmpty(value) || "null".equals(value)) {
                 continue;
             }
             map.put(StrUtil.toUnderlineCase(declaredField.getName()), value);

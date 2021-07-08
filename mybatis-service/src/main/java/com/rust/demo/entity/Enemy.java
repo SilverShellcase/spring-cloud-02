@@ -42,5 +42,5 @@ public class Enemy extends Model<Enemy> {
     @TableField(condition = SqlCondition.LIKE)
     private String ability;
 
-    private Boolean isInvalidKilled;
+    private Byte isInvalidKilled;
 }

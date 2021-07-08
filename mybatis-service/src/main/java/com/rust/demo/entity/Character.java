@@ -19,7 +19,7 @@ public class Character extends Model<Character> {
     @TableField(condition = SqlCondition.LIKE)
     private String description;
 
-    private Boolean canUseGeneralPotentialItem;
+    private Byte canUseGeneralPotentialItem;
 
     private String potentialItemId;
     @TableField(condition = SqlCondition.LIKE)
@@ -45,13 +45,13 @@ public class Character extends Model<Character> {
 
     private String itemObtainApproach;
 
-    private Boolean isNotObtainable;
+    private Byte isNotObtainable;
 
-    private Boolean isSpChar;
+    private Byte isSpChar;
 
-    private Boolean maxPotentialLevel;
+    private Byte maxPotentialLevel;
 
-    private Boolean rarity;
+    private Byte rarity;
     @TableField(condition = SqlCondition.LIKE)
     private String profession;
 }
