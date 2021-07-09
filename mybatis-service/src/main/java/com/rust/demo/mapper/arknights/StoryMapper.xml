@@ -7,11 +7,11 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="char_id" jdbcType="VARCHAR" property="charId" />
     <result column="story_text" jdbcType="VARCHAR" property="storyText" />
-    <result column="unlock_type" jdbcType="TINYINT" property="unLockType" />
-    <result column="unlock_param" jdbcType="VARCHAR" property="unLockParam" />
-    <result column="unlock_string" jdbcType="VARCHAR" property="unLockString" />
+    <result column="unlock_type" jdbcType="TINYINT" property="unlockType" />
+    <result column="unlock_param" jdbcType="VARCHAR" property="unlockParam" />
+    <result column="unlock_string" jdbcType="VARCHAR" property="unlockString" />
     <result column="story_title" jdbcType="VARCHAR" property="storyTitle" />
-    <result column="unlock_or_not" jdbcType="TINYINT" property="unLockorNot" />
+    <result column="unlock_or_not" jdbcType="TINYINT" property="unlockOrNot" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->

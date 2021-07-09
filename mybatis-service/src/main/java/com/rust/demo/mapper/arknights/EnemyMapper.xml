@@ -18,7 +18,7 @@
     <result column="defence" jdbcType="VARCHAR" property="defence" />
     <result column="resistance" jdbcType="VARCHAR" property="resistance" />
     <result column="ability" jdbcType="VARCHAR" property="ability" />
-    <result column="is_invalid_killed" jdbcType="BOOLEAN" property="isInvalidKilled" />
+    <result column="is_invalid_killed" jdbcType="TINYINT" property="isInvalidKilled" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->

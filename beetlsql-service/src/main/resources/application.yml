@@ -12,3 +12,6 @@ spring:
     time-zone: GMT+8
 logging:
   config: classpath:logback-spring.xml
+server:
+  servlet:
+    context-path: /beetlsql

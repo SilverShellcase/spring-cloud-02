@@ -1,0 +1,26 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      routes:
+        - id: order
+          uri: lb://order-service
+          order: 9000
+          predicates:
+            - Path=/team/**
+        - id: mybatis
+          uri: lb://mybatis-service
+          order: 9000
+          predicates:
+            - Path=/character/**
+        - id: beetlsql
+          uri: lb://beetlsql-service
+          order: 9000
+          predicates:
+            - Path=/enemy/**

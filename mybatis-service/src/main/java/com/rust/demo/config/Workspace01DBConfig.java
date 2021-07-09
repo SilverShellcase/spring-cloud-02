@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @MapperScan(basePackages = "com.rust.demo.mapper.workspace01", sqlSessionFactoryRef = "workspace01SqlSessionFactory")
-public class Workspace01Config {
+public class Workspace01DBConfig {
 
     @Bean(name = "workspace01DataSource")
     @ConfigurationProperties(prefix = "spring.datasource.workspace01")

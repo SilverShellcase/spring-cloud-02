@@ -7,7 +7,7 @@
     <id column="id" jdbcType="VARCHAR" property="id"/>
     <result column="name" jdbcType="VARCHAR" property="name"/>
     <result column="description" jdbcType="VARCHAR" property="description"/>
-    <result column="can_use_general_potential_item" jdbcType="BOOLEAN" property="canUseGeneralPotentialItem"/>
+    <result column="can_use_general_potential_item" jdbcType="TINYINT" property="canUseGeneralPotentialItem"/>
     <result column="potential_item_id" jdbcType="VARCHAR" property="potentialItemId"/>
     <result column="nation_id" jdbcType="VARCHAR" property="nationId"/>
     <result column="group_id" jdbcType="VARCHAR" property="groupId"/>
@@ -20,10 +20,10 @@
     <result column="item_usage" jdbcType="VARCHAR" property="itemUsage"/>
     <result column="item_desc" jdbcType="VARCHAR" property="itemDesc"/>
     <result column="item_obtain_approach" jdbcType="VARCHAR" property="itemObtainApproach"/>
-    <result column="is_not_obtainable" jdbcType="BOOLEAN" property="isNotObtainable"/>
-    <result column="is_sp_char" jdbcType="BOOLEAN" property="isSpChar"/>
-    <result column="max_potential_level" jdbcType="BOOLEAN" property="maxPotentialLevel"/>
-    <result column="rarity" jdbcType="BOOLEAN" property="rarity"/>
+    <result column="is_not_obtainable" jdbcType="TINYINT" property="isNotObtainable"/>
+    <result column="is_sp_char" jdbcType="TINYINT" property="isSpChar"/>
+    <result column="max_potential_level" jdbcType="TINYINT" property="maxPotentialLevel"/>
+    <result column="rarity" jdbcType="TINYINT" property="rarity"/>
     <result column="profession" jdbcType="VARCHAR" property="profession"/>
   </resultMap>
   <resultMap id="CharacterVOMap" type="com.rust.demo.vo.CharacterVO">

@@ -20,7 +20,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @MapperScan(basePackages = "com.rust.demo.mapper.arknights", sqlSessionFactoryRef = "arknightsSqlSessionFactory")
-public class ArknightsConfig {
+public class ArknightsDBConfig {
 
     @Bean(name = "arknightsDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.arknights")

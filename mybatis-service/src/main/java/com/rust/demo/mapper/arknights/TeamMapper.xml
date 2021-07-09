@@ -10,8 +10,8 @@
     <result column="power_name" jdbcType="VARCHAR" property="powerName" />
     <result column="power_code" jdbcType="VARCHAR" property="powerCode" />
     <result column="color" jdbcType="VARCHAR" property="color" />
-    <result column="is_limited" jdbcType="BOOLEAN" property="isLimited" />
-    <result column="is_raw" jdbcType="BOOLEAN" property="isRaw" />
+    <result column="is_limited" jdbcType="TINYINT" property="isLimited" />
+    <result column="is_raw" jdbcType="TINYINT" property="isRaw" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
