@@ -1,7 +1,6 @@
 package com.rust.demo.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.rust.demo.common.Result;
 import com.rust.demo.entity.Team;
 import com.rust.demo.service.TeamService;
 import com.rust.demo.util.ImportUtil;
@@ -23,19 +22,19 @@ public class TeamController {
 
     @Transactional("arknightsTransactionManager")
     @PostMapping("/team/import")
-    public Result importTeam(@RequestParam("file") MultipartFile file) {
+    public Object importTeam(@RequestParam("file") MultipartFile file) {
         ImportUtil<Team> importUtil = new ImportUtil<>();
         importUtil.importJson(file, teamService, Team.class);
         return ResultUtil.success();
     }
 
     @PostMapping("/team/get")
-    public Result get(@RequestBody Team entity) {
-        return ResultUtil.success(teamService.getById(entity.getId()));
+    public Object get(@RequestBody Team entity) {
+        return teamService.getById(entity.getId());
     }
 
     @PostMapping("/team/list")
-    public Result list(@RequestBody Team entity) {
-        return ResultUtil.success(teamService.list(new QueryWrapper<>(entity)));
+    public Object list(@RequestBody Team entity) {
+        return teamService.list(new QueryWrapper<>(entity));
     }
 }

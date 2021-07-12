@@ -16,22 +16,22 @@ public class MybatisController {
     private MybatisService mybatisService;
 
     @PostMapping("/character/import")
-    public Result importCharacter(@RequestParam("file") MultipartFile file) {
+    public Object importCharacter(@RequestParam("file") MultipartFile file) {
         return mybatisService.importCharacter(file);
     }
 
     @PostMapping("/character/importCharacterInfo")
-    public Result importCharacterInfo(@RequestParam("file") MultipartFile file) {
+    public Object importCharacterInfo(@RequestParam("file") MultipartFile file) {
         return mybatisService.importCharacterInfo(file);
     }
 
     @PostMapping("/enemy/import")
-    public Result importEnemy(@RequestParam("file") MultipartFile file) {
+    public Object importEnemy(@RequestParam("file") MultipartFile file) {
         return mybatisService.importEnemy(file);
     }
 
     @PostMapping("/team/import")
-    public Result importTeam(@RequestParam("file") MultipartFile file) {
+    public Object importTeam(@RequestParam("file") MultipartFile file) {
         return mybatisService.importTeam(file);
     }
 

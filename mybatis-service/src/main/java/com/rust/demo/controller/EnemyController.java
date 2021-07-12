@@ -1,7 +1,6 @@
 package com.rust.demo.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.rust.demo.common.Result;
 import com.rust.demo.entity.Enemy;
 import com.rust.demo.service.EnemyService;
 import com.rust.demo.util.ImportUtil;
@@ -23,19 +22,19 @@ public class EnemyController {
 
     @Transactional("arknightsTransactionManager")
     @PostMapping("/enemy/import")
-    public Result importEnemy(@RequestParam("file") MultipartFile file) {
+    public Object importEnemy(@RequestParam("file") MultipartFile file) {
         ImportUtil<Enemy> importUtil = new ImportUtil<>();
         importUtil.importJson(file, enemyService, Enemy.class);
         return ResultUtil.success();
     }
 
     @PostMapping("/enemy/get")
-    public Result get(@RequestBody Enemy entity) {
-        return ResultUtil.success(enemyService.getById(entity.getId()));
+    public Object get(@RequestBody Enemy entity) {
+        return enemyService.getById(entity.getId());
     }
 
     @PostMapping("/enemy/list")
-    public Result list(@RequestBody Enemy entity) {
-        return ResultUtil.success(enemyService.list(new QueryWrapper<>(entity)));
+    public Object list(@RequestBody Enemy entity) {
+        return enemyService.list(new QueryWrapper<>(entity));
     }
 }

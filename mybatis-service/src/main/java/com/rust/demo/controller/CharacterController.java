@@ -4,7 +4,6 @@ import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.rust.demo.common.Result;
 import com.rust.demo.entity.Character;
 import com.rust.demo.entity.CharacterInfo;
 import com.rust.demo.entity.Story;
@@ -39,26 +38,25 @@ public class CharacterController {
 
     @Transactional("arknightsTransactionManager")
     @PostMapping("/character/import")
-    public Result importCharacter(@RequestParam("file") MultipartFile file) {
+    public Object importCharacter(@RequestParam("file") MultipartFile file) {
         ImportUtil<Character> importUtil = new ImportUtil<>();
         importUtil.importJson(file, characterService, Character.class);
         return ResultUtil.success();
     }
 
     @PostMapping("/character/get")
-    public Result get(@RequestBody Character entity) {
-        return ResultUtil.success(characterService.selectVoById(entity.getId()));
+    public Object get(@RequestBody Character entity) {
+        return characterService.selectVoById(entity.getId());
     }
 
     @PostMapping("/character/list")
-    public Result list(@RequestBody Character entity) {
-        List<Character> characterList = characterService.list(new QueryWrapper<>(entity));
-        return ResultUtil.success(characterList);
+    public Object list(@RequestBody Character entity) {
+        return characterService.list(new QueryWrapper<>(entity));
     }
 
     @Transactional("arknightsTransactionManager")
     @PostMapping("/character/importCharacterInfo")
-    public Result importCharacterInfo(@RequestParam("file") MultipartFile file) throws IOException {
+    public Object importCharacterInfo(@RequestParam("file") MultipartFile file) throws IOException {
         JsonNode jsonNode = new JsonMapper().readTree(file.getInputStream());
         JsonNode handbookDict = jsonNode.get("handbookDict");
         Iterator<String> fieldNames = handbookDict.fieldNames();

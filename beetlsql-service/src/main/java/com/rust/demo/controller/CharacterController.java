@@ -1,7 +1,6 @@
 package com.rust.demo.controller;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.rust.demo.common.Result;
 import com.rust.demo.entity.Character;
 import com.rust.demo.entity.CharacterInfo;
 import com.rust.demo.entity.Story;
@@ -18,6 +17,7 @@ import org.beetl.sql.core.query.Query;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -25,6 +25,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+@RequestMapping("/character")
 @RestController
 public class CharacterController {
 
@@ -38,23 +39,22 @@ public class CharacterController {
     @Resource
     private StoryMapper storyMapper;
 
-    @PostMapping("character/list")
-    public Result list(@RequestBody Character entity) {
-        return ResultUtil.success(characterMapper.selectList(entity));
+    @PostMapping("/list")
+    public Object list(@RequestBody Character entity) {
+        return characterMapper.selectList(entity);
     }
 
-    @PostMapping("character/page")
-    public Result page(@RequestBody Map<String, Object> param) {
+    @PostMapping("/page")
+    public Object page(@RequestBody Map<String, Object> param) {
         Query<Character> query = characterMapper.createQuery();
         Character character = BeanUtil.mapToBean(param, Character.class, true);
         CustomQueryUtil.setLikeField(character, query, likeFields);
         CustomQueryUtil.setEqField(character, query, eqFields);
-
-        return ResultUtil.success(query.page(CustomPageUtil.getPageRequest(param)));
+        return query.page(CustomPageUtil.getPageRequest(param));
     }
 
-    @PostMapping("character/get")
-    public Result get(@RequestBody Character entity) {
+    @PostMapping("/get")
+    public Object get(@RequestBody Character entity) {
         Character character = characterMapper.single(entity.getId());
         CharacterInfo characterInfo = characterInfoMapper.single(entity.getId());
         LambdaQuery<Story> lambdaQuery = storyMapper.createLambdaQuery();
@@ -63,12 +63,12 @@ public class CharacterController {
         CustomBeanUtil.copyProperties(characterInfo, characterVO);
         List<Story> storyList = lambdaQuery.andEq(Story::getCharId, characterVO.getId()).select();
         characterVO.setStoryList(storyList);
-        return ResultUtil.success(characterVO);
+        return characterVO;
     }
 
     @Transactional("arknightsTransactionManager")
-    @PostMapping("character/update")
-    public Result update(@RequestBody CharacterVO entity) {
+    @PostMapping("/update")
+    public Object update(@RequestBody CharacterVO entity) {
         Character character = new Character();
         CustomBeanUtil.copyProperties(entity, character);
         characterMapper.updateById(character);
@@ -79,8 +79,8 @@ public class CharacterController {
     }
 
     @Transactional("arknightsTransactionManager")
-    @PostMapping("character/delete")
-    public Result delete(@RequestBody Character entity) {
+    @PostMapping("/delete")
+    public Object delete(@RequestBody Character entity) {
         characterMapper.deleteById(entity.getId());
         characterInfoMapper.deleteById(entity.getId());
         return ResultUtil.success();

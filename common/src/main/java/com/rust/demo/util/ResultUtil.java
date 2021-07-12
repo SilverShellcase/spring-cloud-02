@@ -17,7 +17,15 @@ public class ResultUtil {
         return new Result(HttpStatus.BAD_REQUEST);
     }
 
+    public static Result failed(String msg) {
+        return new Result(HttpStatus.BAD_REQUEST, msg);
+    }
+
     public static Result error() {
         return new Result(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    public static Result error(String msg) {
+        return new Result(HttpStatus.INTERNAL_SERVER_ERROR, msg);
     }
 }

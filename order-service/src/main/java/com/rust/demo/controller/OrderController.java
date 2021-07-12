@@ -15,7 +15,7 @@ public class OrderController {
     private OperatorService operatorService;
 
     @GetMapping("/operator/get/{id}")
-    public Result getOperator(@PathVariable("id") Long id) {
+    public Object getOperator(@PathVariable("id") Long id) {
         return operatorService.get(id);
     }
 }
