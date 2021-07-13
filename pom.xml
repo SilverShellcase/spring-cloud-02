@@ -20,6 +20,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <springboot.version>2.5.2</springboot.version>
+    <springcloud.version>2020.0.3</springcloud.version>
+    <alibabacloud.version>2.2.1.RELEASE</alibabacloud.version>
     <junit.version>4.12</junit.version>
     <log4j.version>1.2.17</log4j.version>
     <lombok.version>1.16.18</lombok.version>
@@ -30,19 +33,19 @@
 
   <dependencyManagement>
     <dependencies>
-      <!--spring boot 2.2.2-->
+      <!--spring boot-->
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
-        <version>2.2.2.RELEASE</version>
+        <version>${springboot.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      <!--spring cloud Hoxton.SR1-->
+      <!--spring cloud-->
       <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-dependencies</artifactId>
-        <version>Hoxton.SR1</version>
+        <version>${springcloud.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -50,7 +53,7 @@
       <dependency>
         <groupId>com.alibaba.cloud</groupId>
         <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-        <version>2.1.0.RELEASE</version>
+        <version>${alibabacloud.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
