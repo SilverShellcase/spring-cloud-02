@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityServerConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Lazy
     @Resource
