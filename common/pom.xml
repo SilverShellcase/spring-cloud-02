@@ -13,7 +13,6 @@
 
   <properties>
     <hutool.version>5.1.0</hutool.version>
-    <oauth.version>2.2.5.RELEASE</oauth.version>
     <junit.version>4.13</junit.version>
   </properties>
 
@@ -36,16 +35,7 @@
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-security</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-redis</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-oauth2</artifactId>
-      <version>${oauth.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.cloud</groupId>

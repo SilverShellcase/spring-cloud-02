@@ -13,6 +13,8 @@
 
   <properties>
     <beetl.version>3.5.1-RELEASE</beetl.version>
+    <oauth.version>2.2.5.RELEASE</oauth.version>
+    <jjwt.version>0.9.1</jjwt.version>
   </properties>
 
   <dependencies>
@@ -41,6 +43,20 @@
       <groupId>com.ibeetl</groupId>
       <artifactId>sql-springboot-starter</artifactId>
       <version>${beetl.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-oauth2</artifactId>
+      <version>${oauth.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt</artifactId>
+      <version>${jjwt.version}</version>
     </dependency>
   </dependencies>
 

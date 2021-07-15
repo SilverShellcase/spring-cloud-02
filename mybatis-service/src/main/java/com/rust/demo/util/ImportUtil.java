@@ -1,11 +1,11 @@
 package com.rust.demo.util;
 
-import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -58,6 +58,6 @@ public class ImportUtil<T> {
     }
 
     private String dealTags(String tags) {
-        return StrUtil.isEmpty(tags) ? null : tags.replaceAll("[\\[\\]\"]", "");
+        return StringUtils.hasText(tags) ? null : tags.replaceAll("[\\[\\]\"]", "");
     }
 }

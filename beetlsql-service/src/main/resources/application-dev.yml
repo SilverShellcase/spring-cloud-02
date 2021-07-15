@@ -56,3 +56,7 @@ beetlsql:
 feign:
   sentinel:
     enabled: true
+jwt:
+  header: Authorization
+  secret: H4J35LON
+  expiration: 3600000

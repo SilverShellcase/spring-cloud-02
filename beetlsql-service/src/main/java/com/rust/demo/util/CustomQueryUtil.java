@@ -2,7 +2,7 @@ package com.rust.demo.util;
 
 import cn.hutool.core.util.StrUtil;
 import org.beetl.sql.core.query.Query;
-import org.springframework.util.StringUtils;
+import org.springframework.util.ObjectUtils;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -39,7 +39,7 @@ public class CustomQueryUtil {
             } catch (IllegalAccessException e) {
                 continue;
             }
-            if (StringUtils.isEmpty(value) || "null".equals(value)) {
+            if (ObjectUtils.isEmpty(value) || "null".equals(value)) {
                 continue;
             }
             map.put(StrUtil.toUnderlineCase(declaredField.getName()), value);
