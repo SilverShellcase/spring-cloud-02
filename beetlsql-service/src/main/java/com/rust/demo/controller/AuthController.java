@@ -22,12 +22,12 @@ public class AuthController {
         if (!StringUtils.hasText(userVO.getUsername()) || !StringUtils.hasText(userVO.getPassword())) {
             return ResultUtil.failed("用户名或密码不能为空");
         }
-        return jwtAuthService.login(userVO.getUsername(), userVO.getPassword());
+        return ResultUtil.success(jwtAuthService.login(userVO.getUsername(), userVO.getPassword()));
     }
 
     @PostMapping("/auth/refreshToken")
     public Object refreshToken(@RequestHeader("${jwt.header}") String token) {
-        return jwtAuthService.refreshToken(token);
+        return ResultUtil.success(jwtAuthService.refreshToken(token));
     }
 
 }

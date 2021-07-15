@@ -1,8 +1,7 @@
 package com.rust.demo.aop;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rust.demo.common.Result;
+import com.rust.demo.util.CustomJsonUtil;
 import com.rust.demo.util.ResultUtil;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -23,12 +22,7 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
     public Object beforeBodyWrite(Object data, MethodParameter returnType, MediaType mediaType, Class<? extends HttpMessageConverter<?>> clazz, ServerHttpRequest request, ServerHttpResponse response) {
         // String类型不能直接包装
         if (returnType.getParameterType().equals(String.class)) {
-            ObjectMapper objectMapper = new ObjectMapper();
-            try {
-                return objectMapper.writeValueAsString(ResultUtil.success(data));
-            } catch (JsonProcessingException e) {
-                ResultUtil.error("返回String类型错误");
-            }
+            return CustomJsonUtil.toJsonString(ResultUtil.success(data));
         }
         return ResultUtil.success(data);
     }
