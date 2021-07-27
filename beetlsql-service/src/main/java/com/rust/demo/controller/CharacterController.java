@@ -9,7 +9,7 @@ import com.rust.demo.mapper.arknights.CharacterMapper;
 import com.rust.demo.mapper.arknights.StoryMapper;
 import com.rust.demo.util.CustomBeanUtil;
 import com.rust.demo.util.CustomPageUtil;
-import com.rust.demo.util.CustomQueryUtil;
+import com.rust.demo.util.QueryUtil;
 import com.rust.demo.util.ResultUtil;
 import com.rust.demo.vo.CharacterVO;
 import org.beetl.sql.core.query.LambdaQuery;
@@ -48,8 +48,8 @@ public class CharacterController {
     public Object page(@RequestBody Map<String, Object> param) {
         Query<Character> query = characterMapper.createQuery();
         Character character = BeanUtil.mapToBean(param, Character.class, true);
-        CustomQueryUtil.setLikeField(character, query, likeFields);
-        CustomQueryUtil.setEqField(character, query, eqFields);
+        QueryUtil.setLikeField(character, query, likeFields);
+        QueryUtil.setEqField(character, query, eqFields);
         return query.page(CustomPageUtil.getPageRequest(param));
     }
 

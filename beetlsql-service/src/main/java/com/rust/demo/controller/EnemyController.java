@@ -4,7 +4,7 @@ import cn.hutool.core.bean.BeanUtil;
 import com.rust.demo.entity.Enemy;
 import com.rust.demo.mapper.arknights.EnemyMapper;
 import com.rust.demo.util.CustomPageUtil;
-import com.rust.demo.util.CustomQueryUtil;
+import com.rust.demo.util.QueryUtil;
 import org.beetl.sql.core.query.Query;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,8 +27,8 @@ public class EnemyController {
     @PostMapping("/enemy/list")
     public Object list(@RequestBody Enemy enemy) {
         Query<Enemy> query = enemyMapper.createQuery();
-        CustomQueryUtil.setLikeField(enemy, query, likeFields);
-        CustomQueryUtil.setEqField(enemy, query, eqFields);
+        QueryUtil.setLikeField(enemy, query, likeFields);
+        QueryUtil.setEqField(enemy, query, eqFields);
 
         return query.select();
     }
@@ -37,8 +37,8 @@ public class EnemyController {
     public Object page(@RequestBody Map<String, Object> param) {
         Query<Enemy> query = enemyMapper.createQuery();
         Enemy enemy = BeanUtil.mapToBean(param, Enemy.class, true);
-        CustomQueryUtil.setLikeField(enemy, query, likeFields);
-        CustomQueryUtil.setEqField(enemy, query, eqFields);
+        QueryUtil.setLikeField(enemy, query, likeFields);
+        QueryUtil.setEqField(enemy, query, eqFields);
 
         return query.page(CustomPageUtil.getPageRequest(param));
     }

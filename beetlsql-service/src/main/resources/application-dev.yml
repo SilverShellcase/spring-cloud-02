@@ -59,4 +59,5 @@ feign:
 jwt:
   header: Authorization
   secret: H4J35LON
-  expiration: 3600000
+  #72 * 60 * 60 * 1000
+  expiration: 259200000

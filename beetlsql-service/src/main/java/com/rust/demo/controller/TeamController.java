@@ -4,7 +4,7 @@ import cn.hutool.core.bean.BeanUtil;
 import com.rust.demo.entity.Team;
 import com.rust.demo.mapper.arknights.TeamMapper;
 import com.rust.demo.util.CustomPageUtil;
-import com.rust.demo.util.CustomQueryUtil;
+import com.rust.demo.util.QueryUtil;
 import org.beetl.sql.core.query.Query;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,8 +27,8 @@ public class TeamController {
     @PostMapping("/team/list")
     public Object list(@RequestBody Team team) {
         Query<Team> query = teamMapper.createQuery();
-        CustomQueryUtil.setLikeField(team, query, likeFields);
-        CustomQueryUtil.setEqField(team, query, eqFields);
+        QueryUtil.setLikeField(team, query, likeFields);
+        QueryUtil.setEqField(team, query, eqFields);
 
         return query.select();
     }
@@ -37,8 +37,8 @@ public class TeamController {
     public Object page(@RequestBody Map<String, Object> param) {
         Query<Team> query = teamMapper.createQuery();
         Team team = BeanUtil.mapToBean(param, Team.class, true);
-        CustomQueryUtil.setLikeField(team, query, likeFields);
-        CustomQueryUtil.setEqField(team, query, eqFields);
+        QueryUtil.setLikeField(team, query, likeFields);
+        QueryUtil.setEqField(team, query, eqFields);
 
         return query.page(CustomPageUtil.getPageRequest(param));
     }
