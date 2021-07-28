@@ -40,3 +40,6 @@ spring:
 feign:
   sentinel:
     enabled: true
+mybatis-plus:
+  configuration:
+    cache-enabled: true

@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.RedisSerializer;
 
 @Configuration
 public class RedisDBConfig {
@@ -56,16 +57,24 @@ public class RedisDBConfig {
     @Primary
     @Bean("redisTemplate")
     public RedisTemplate<String, Object> stringRedisTemplate(@Qualifier("factory") LettuceConnectionFactory factory) {
-        RedisTemplate<String, Object> temple = new RedisTemplate<>();
-        temple.setConnectionFactory(factory);
-        return temple;
+        RedisTemplate<String, Object> template = new RedisTemplate<>();
+        template.setConnectionFactory(factory);
+        return template;
     }
 
     @Bean("redisTemplate1")
     public RedisTemplate<String, Object> stringRedisTemplate1(@Qualifier("factory1") LettuceConnectionFactory factory1) {
-        RedisTemplate<String, Object> temple = new RedisTemplate<>();
-        temple.setConnectionFactory(factory1);
-        return temple;
+        RedisTemplate<String, Object> template = new RedisTemplate<>();
+        template.setConnectionFactory(factory1);
+
+        template.setConnectionFactory(factory1);
+        //key序列化方式
+        template.setKeySerializer(RedisSerializer.string());
+        //value序列化
+        template.setValueSerializer(RedisSerializer.json());
+        //value hashmap序列化
+        template.setHashValueSerializer(RedisSerializer.json());
+        return template;
     }
 
 }
